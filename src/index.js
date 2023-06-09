@@ -7,8 +7,4 @@ import App from "./App";
 // index 에 글로벌하게 적용할 css를 임포트하거나 한다.
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+root.render(<App />);
