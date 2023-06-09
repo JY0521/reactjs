@@ -1,0 +1,8 @@
+/* css파일 이름을 지을땐 뭐든 상관없지만
+    이름.module.css 처럼 꼭 .module을 추가해줘야
+    리액트가 알아서 클래스명도 생성하고 함.
+*/
+.title {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 18px;
+}
