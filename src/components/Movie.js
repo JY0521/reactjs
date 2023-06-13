@@ -1,12 +1,15 @@
 //propTypes를 가져와서 적용시키기
 import propTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 //부모한테서 props를 받아올것
-function Movie({ coverImg, title, summary, genres }) {
+function Movie({ id, coverImg, title, summary, genres }) {
   return (
     <div>
       <img src={coverImg} alt={title} />
-      <h2>{title}</h2>
+      <h2>
+        <Link to={`/movie/${id}`}>{title}</Link>
+      </h2>
       <p>{summary}</p>
       <ul>
         {
@@ -21,6 +24,7 @@ function Movie({ coverImg, title, summary, genres }) {
 
 //prop-types의 타입을 설정하기
 Movie.propTypes = {
+  id: propTypes.number.isRequired,
   coverImg: propTypes.string.isRequired,
   title: propTypes.string.isRequired,
   summary: propTypes.string.isRequired,
