@@ -21,7 +21,7 @@ function Detail() {
   }, []);
   return (
     <div>
-      <Link to={`/reactjs/`}>
+      <Link to={`/Home/`}>
         <img src={home} alt="home" className={styles.home__btn} />
       </Link>
       <h1 className={styles.h1}>영화 정보</h1>
