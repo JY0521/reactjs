@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
+import home from "./icon_home.svg";
+import styles from "./Detail.module.css";
 //url에 있는 id값을 받아오려면 useParams를 사용하면 된다.
 
 function Detail() {
@@ -18,20 +21,37 @@ function Detail() {
   }, []);
   return (
     <div>
-      <h1>영화 정보</h1>
-      <div>
-        <img src={movieInfo.medium_cover_image} alt={movieInfo.title} />
-        <div className="info_right">
-          <h2>{movieInfo.title_long}</h2>
-          <p className="rating">⭐ {movieInfo.rating}</p>
-          <p className="like_count">❤️ {movieInfo.like_count}</p>
+      <Link to={`/`}>
+        <img src={home} alt="home" className={styles.home__btn} />
+      </Link>
+      <h1 className={styles.h1}>영화 정보</h1>
+
+      <div className={styles.info__bgimg}>
+        <img src={movieInfo.background_image} alt={movieInfo.title} />
+      </div>
+      <div className={styles.info__wrap}>
+        <div className={styles.info__left}>
+          <img
+            src={movieInfo.medium_cover_image}
+            alt={movieInfo.title}
+            className={styles.info__img}
+          />
+        </div>
+        <div className={styles.info__right}>
+          <p className={styles.info__rating}>
+            <span>★</span> {movieInfo.rating}
+          </p>
+          <p className={styles.info__like}>
+            <span>♥</span> {movieInfo.like_count}
+          </p>
           <ul>
             {movieInfo.genres &&
               movieInfo.genres.map((g) => <li key={g}>{g}</li>)}
           </ul>
         </div>
       </div>
-      <p className="movieIntro">{movieInfo.description_intro}</p>
+      <h2 className={styles.info__title}>{movieInfo.title_long}</h2>
+      <p className={styles.info__intro}>{movieInfo.description_intro}</p>
     </div>
   );
 }
