@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Movie from "../components/Movie";
+import styles from "./Home.module.css";
 
 function Home() {
   const [loading, setLoading] = useState(true);
@@ -39,21 +40,24 @@ function Home() {
   // *****!!!! 그런데 then()함수는 잘 안씀. async-await함수를 주로 사용.
 
   return (
-    <div>
+    <div className={styles.container}>
       {loading ? (
-        <h1>Loading...</h1>
+        <h1 className={styles.load}>Loading...</h1>
       ) : (
         <div>
-          {movies.map((movie) => (
-            <Movie
-              key={movie.id}
-              id={movie.id}
-              coverImg={movie.medium_cover_image}
-              title={movie.title}
-              summary={movie.summary}
-              genres={movie.genres}
-            />
-          ))}
+          <h1 className={styles.h1}>MOVIE</h1>
+          <div className={styles.movie}>
+            {movies.map((movie) => (
+              <Movie
+                key={movie.id}
+                id={movie.id}
+                coverImg={movie.medium_cover_image}
+                title={movie.title}
+                genres={movie.genres}
+                rating={movie.rating}
+              />
+            ))}
+          </div>
         </div>
       )}
     </div>

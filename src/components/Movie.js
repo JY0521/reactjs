@@ -1,23 +1,30 @@
 //propTypes를 가져와서 적용시키기
 import propTypes from "prop-types";
 import { Link } from "react-router-dom";
+import styles from "./Movie.module.css";
 
 //부모한테서 props를 받아올것
-function Movie({ id, coverImg, title, summary, genres }) {
+function Movie({ id, coverImg, title, genres, rating }) {
   return (
-    <div>
-      <img src={coverImg} alt={title} />
-      <h2>
-        <Link to={`/movie/${id}`}>{title}</Link>
-      </h2>
-      <p>{summary.length > 200 ? `${summary.slice(0, 200)}...` : summary}</p>
-      <ul>
-        {
-          //genres가 없는 영화가 있는경우 에러가 나기 때문에
-          //장르가 있는 것만 불러오기 위해 &&을 적용
-          genres && genres.map((g) => <li key={g}>{g}</li>)
-        }
-      </ul>
+    <div className={styles.movie}>
+      <div className={styles.movie__wrap}>
+        <Link to={`/movie/${id}`}>
+          <div className={styles.movie__img}>
+            <img src={coverImg} alt={title} />
+          </div>
+          <h2 className={styles.movie__title}>{title}</h2>
+        </Link>
+        <ul className={styles.movie__genres}>
+          {
+            //genres가 없는 영화가 있는경우 에러가 나기 때문에
+            //장르가 있는 것만 불러오기 위해 &&을 적용
+            genres && genres.map((g) => <li key={g}>{g}</li>)
+          }
+        </ul>
+        <p className={styles.movie__rating}>
+          <span>☆</span> {rating}
+        </p>
+      </div>
     </div>
   );
 }
